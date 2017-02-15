@@ -1,0 +1,32 @@
+<div class='control-panel'>
+  <div class="controls-layout">
+       <div class="control">
+           <i ng-click="$ctrl.bulbButtonClicked()" class="fa fa-lightbulb-o fa-2x" aria-hidden="true" title="Light On/Off"></i>
+            <div>
+              {{$ctrl.lightOnOff()}}
+            </div>
+       </div>
+       <div class="control">
+           <i ng-click="$ctrl.curtainButtonClicked()" class="fa fa-moon-o fa-2x" aria-hidden="true" title="Curtain Up/Down"></i>
+           <div>
+             {{$ctrl.curtainStatus()}}
+           </div>
+       </div>
+       <div class="control">
+           <i ng-click="$ctrl.galleryButtonClicked()" class="fa fa-photo fa-2x" aria-hidden="true" title="Start/Stop Gallery"></i>
+           <div>
+             {{$ctrl.galleryShow()}}
+           </div>
+       </div>
+       <div class="control">
+           <i ng-click="$ctrl.waterButtonClicked()" class="fa fa-leaf fa-2x" aria-hidden="true" title="Water plant"></i>
+           <div>
+             {{$ctrl.waterPoured()}}
+           </div>
+       </div>
+       <div class="control larger">
+           <i ng-click="$ctrl.changeTemperature(true)" class="fa fa-chevron-circle-up" aria-hidden="true" title="Increase temperature"></i>
+           <i ng-click="$ctrl.changeTemperature(false)" class="fa fa-chevron-circle-down" aria-hidden="true" title="Decrease temperature"></i>
+       </div>
+   </div>
+</div>

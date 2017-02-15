@@ -1,0 +1,5 @@
+<div class="temperature">
+    <img src="{{$ctrl.thermometerImg}}" class="thermometer" alt="Thermometer"/>
+    <div class="temperature-gradient" ng-style="{'height': $ctrl.temperature() + 'px'}"></div>
+    <div>{{$ctrl.temperature()}} Farenheit</div>
+</div>

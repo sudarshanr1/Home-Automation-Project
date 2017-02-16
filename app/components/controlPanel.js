@@ -4,17 +4,22 @@ angular.module('app').component('controlPanel', {
     controller: function(HomeAutomationService, HomeAutomationConstants) {
          _this = this;
 
+         /* Gets initial light on/off status from server*/
          _this.lightOnOff = function() {
            return HomeAutomationService.getInitialLightStatus() ? HomeAutomationConstants.Constants.OFF : HomeAutomationConstants.Constants.ON;
          }
 
+         /* Gets initial gallery on/off status from server*/
          _this.galleryShow = function() {
            return HomeAutomationService.getInitialGalleryStatus() ? HomeAutomationConstants.Constants.OFF : HomeAutomationConstants.Constants.ON;
          }
+
+         /* Gets initial water on/off status from server*/
          _this.waterPoured = function() {
            return HomeAutomationService.getInitialGalleryStatus() ? HomeAutomationConstants.Constants.OFF : HomeAutomationConstants.Constants.ON;
          };
 
+         /* Gets initial screen show/close status from server*/
          _this.curtainStatus = function() {
            return !HomeAutomationService.getInitialCurtainStatus() ? HomeAutomationConstants.Constants.OPEN : HomeAutomationConstants.Constants.CLOSED;
          }

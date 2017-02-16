@@ -4,6 +4,8 @@ angular.module('app').component('temperature', {
     controller: function(HomeAutomationService) {
       var _this = this;
       _this.thermometerImg = require('url!TemperatureImage');
+
+      /* Gets Temperature */
       _this.temperature = function() {
         return HomeAutomationService.getTemperature()
       };

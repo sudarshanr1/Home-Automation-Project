@@ -33588,6 +33588,8 @@
 	    controller: function(HomeAutomationService) {
 	      var _this = this;
 	      _this.screenImg = __webpack_require__(12);
+
+	      /* Gets screen status*/
 	      _this.screenStatus = function() {
 	        return HomeAutomationService.getCurtainStatus();
 	      };
@@ -33617,17 +33619,22 @@
 	    controller: function(HomeAutomationService, HomeAutomationConstants) {
 	         _this = this;
 
+	         /* Gets initial light on/off status from server*/
 	         _this.lightOnOff = function() {
 	           return HomeAutomationService.getInitialLightStatus() ? HomeAutomationConstants.Constants.OFF : HomeAutomationConstants.Constants.ON;
 	         }
 
+	         /* Gets initial gallery on/off status from server*/
 	         _this.galleryShow = function() {
 	           return HomeAutomationService.getInitialGalleryStatus() ? HomeAutomationConstants.Constants.OFF : HomeAutomationConstants.Constants.ON;
 	         }
+
+	         /* Gets initial water on/off status from server*/
 	         _this.waterPoured = function() {
 	           return HomeAutomationService.getInitialGalleryStatus() ? HomeAutomationConstants.Constants.OFF : HomeAutomationConstants.Constants.ON;
 	         };
 
+	         /* Gets initial screen show/close status from server*/
 	         _this.curtainStatus = function() {
 	           return !HomeAutomationService.getInitialCurtainStatus() ? HomeAutomationConstants.Constants.OPEN : HomeAutomationConstants.Constants.CLOSED;
 	         }
@@ -33710,11 +33717,13 @@
 	    template: __webpack_require__(18),
 	    controller: function(HomeAutomationService) {
 	         var _this = this;
-	         
+
+	         /* Gets photos from server*/
 	          _this.photos = function() {
 	            return HomeAutomationService.getInitialPhotos();
 	          }
 
+	          /* show/hide gallery*/
 	          _this.showGallery = function() {
 	            return !HomeAutomationService.isGalleryButtonClicked();
 	          }
@@ -33738,6 +33747,8 @@
 	    controller: function(HomeAutomationService) {
 	      var _this = this;
 	      _this.waterImg = __webpack_require__(21);
+
+	      /* Gets water status*/
 	      _this.waterPlant = function() {
 	        return !HomeAutomationService.isWaterButtonClicked();
 	      }
@@ -33767,6 +33778,8 @@
 	    controller: function(HomeAutomationService) {
 	      var _this = this;
 	      _this.thermometerImg = __webpack_require__(24);
+
+	      /* Gets Temperature */
 	      _this.temperature = function() {
 	        return HomeAutomationService.getTemperature()
 	      };
@@ -33800,6 +33813,7 @@
 	    _this.initialTemperature;
 	    _this.initialPhotos = [];
 
+	    /* Sets photos data*/
 	    _this.setInitialPhotos = function(){
 	      HomeAutomationDataService.getInitialPhotos().then(function(response){
 	        _this.initialPhotos = response.data.urls;
@@ -33808,82 +33822,101 @@
 	    }
 	    _this.setInitialPhotos();
 
+	    /* Gets photos*/
 	    _this.getInitialPhotos = function() {
 	      return _this.initialPhotos;
 	    }
 
+	    /* Gets initial light on/off status from server*/
 	    HomeAutomationDataService.getInitialLightStatus().then(function(response){
 	      _this.lightStatus = response.data.open;
 	    });
 
+	    /* Gets initial curtain status from server*/
 	    HomeAutomationDataService.getInitialCurtainStatus().then(function(response){
 	      _this.curtainOpen = response.data.open;
 	    });
 
+	    /* Gets initial water status from server*/
 	    HomeAutomationDataService.getInitialWaterPlantStatus().then(function(response){
 	      _this.waterStatus = response.data.open;
 	    });
 
+	    /* Gets initial gallery status from server*/
 	    HomeAutomationDataService.getInitialGalleryStatus().then(function(response){
 	      _this.galleryStatus = response.data.open;
 	    });
 
+	    /* Gets initial temperature from server*/
 	    HomeAutomationDataService.getInitialTemperature().then(function(response){
 	      _this.initialTemperature = response.data.temperature;
 	    });
 
+	    /* sets user desired temperature*/
 	    _this.setTemperature = function(temperature) {
 	       _this.initialTemperature = temperature;
 	    }
 
+	    /* gets user desired temoerature*/
 	    _this.getTemperature = function() {
 	        return _this.initialTemperature;
 	    }
 
+	    /* sets user desired light status*/
 	    _this.setLightButtonClicked = function(lightStatus) {
 	      _this.lightStatus = lightStatus;
 	    }
 
+	    /* gets user desired temperature*/
 	    _this.isLightButtonClicked = function() {
 	      return _this.lightStatus;
 	    }
 
+	    /* sets user desired gallery status*/
 	    _this.setShowGalleryClicked = function(galleryStatus) {
 	      _this.galleryStatus = galleryStatus;
 	    }
 
+	    /* gets user desired gallery*/
 	    _this.isGalleryButtonClicked = function() {
 	      return _this.galleryStatus;
 	    }
 
+	    /* sets user desired water status*/
 	    _this.setWaterButtonClicked = function(waterStatus) {
 	      _this.waterStatus = waterStatus;
 	    }
-
+	    /* gets user desired water status*/
 	    _this.isWaterButtonClicked = function() {
 	      return _this.waterStatus;
 	    }
 
+	    /* sets user desired curtain status*/
 	    _this.getCurtainStatus = function() {
 	      return _this.isCurtainStatus;
 	    }
 
+	    /* sets user desired curtain status*/
 	    _this.setCurtainStatus = function(isCurtainStatus) {
 	      _this.isCurtainStatus = isCurtainStatus;
 	    }
 
+	    /* sets user desired light status*/
 	    _this.getInitialLightStatus = function() {
 	      return _this.lightStatus;
 	    }
 
+	    /* sets initial gallery status*/
 	    _this.getInitialGalleryStatus = function() {
 	      return _this.galleryStatus;
 	    }
 
+	    /* gets initial water status*/
 	    _this.getInitialWaterStatus = function() {
 	      return _this.waterStatus;
 	    }
 
+	    /* gets initial curtain status*/
 	    _this.getInitialCurtainStatus = function() {
 	      return _this.isCurtainStatus;
 	    }
@@ -33899,36 +33932,48 @@
 
 	var angular = __webpack_require__(6);
 	angular.module('app').service('HomeAutomationDataService', function ($http, $q) {
+
+	    /* Gets photos from server*/
 	    this.getInitialPhotos = function(){
 	  		var url = "mock-data/photos.json";
 	  		var promise = $q.defer().promise;
 	  		promise = $http.get(url);
 	  		return promise;
 	  	}
+
+	    /* Gets light status from server*/
 	    this.getInitialLightStatus = function(){
 	  		var url = "mock-data/light-status.json";
 	  		var promise = $q.defer().promise;
 	  		promise = $http.get(url);
 	  		return promise;
 	  	}
+
+	    /* Gets curtain status from server*/
 	    this.getInitialCurtainStatus = function() {
 	  		var url = "mock-data/curtain-status.json";
 	  		var promise = $q.defer().promise;
 	  		promise = $http.get(url);
 	  		return promise;
 	  	}
+
+	    /* Gets temperature from server*/
 	    this.getInitialTemperature = function() {
 	  		var url = "mock-data/temperature.json";
 	  		var promise = $q.defer().promise;
 	  		promise = $http.get(url);
 	  		return promise;
 	  	}
+
+	    /* Gets water status from server*/
 	    this.getInitialWaterPlantStatus = function() {
 	  		var url = "mock-data/water-plant-status.json";
 	  		var promise = $q.defer().promise;
 	  		promise = $http.get(url);
 	  		return promise;
 	  	}
+
+	    /* Gets gallery status from server*/
 	    this.getInitialGalleryStatus = function() {
 	  		var url = "mock-data/gallery-status.json";
 	  		var promise = $q.defer().promise;
@@ -33948,6 +33993,7 @@
 	var angular = __webpack_require__(6);
 	angular.module('app').service('HomeAutomationConstants', function () {
 	    var _this = this;
+	    
 	    _this.Constants = {
 	      ON: 'ON',
 	      OFF: 'OFF',

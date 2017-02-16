@@ -4,6 +4,8 @@ angular.module('app').component('waterPlant', {
     controller: function(HomeAutomationService) {
       var _this = this;
       _this.waterImg = require('url!WaterImage');
+
+      /* Gets water status*/
       _this.waterPlant = function() {
         return !HomeAutomationService.isWaterButtonClicked();
       }

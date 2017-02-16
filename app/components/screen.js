@@ -4,6 +4,8 @@ angular.module('app').component('screen', {
     controller: function(HomeAutomationService) {
       var _this = this;
       _this.screenImg = require('url!ScreenImage');
+
+      /* Gets screen status*/
       _this.screenStatus = function() {
         return HomeAutomationService.getCurtainStatus();
       };
